@@ -4,14 +4,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Pin It</title>
-    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body ng-app="myApp">
-
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Pin It <small>- The Universal Bookmarking App</small></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" role="form">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Find Bookmarks" ng-model="searchCriteria">
+            <span class="input-group-btn">
+              <button class="btn btn-danger">Search</button>
+            </span>
+            <button class='btn btn-primary form-control' data-toggle="modal" data-target="#addBookmark">Add New Bookmark</button>
+          </div>
+        </form>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </div>
 
 <!--(if target dev)><!-->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/foundation/js/foundation.js"></script>
 <script src="js/app.js"></script>
 <!--<!(endif)-->
