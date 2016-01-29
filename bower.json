@@ -1,0 +1,29 @@
+{
+  "name": "Angular Mobile",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dsinkey/Mobile-Angular-Bookmarking",
+  "authors": [
+    "Dustin Sinkey"
+  ],
+  "description": "Angular Mobile",
+  "main": "src/index.html",
+  "keywords": [
+    "angular",
+    "mobile"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.6",
+    "foundation": "~5.2.2",
+    "jquery": "~2.1.0"
+  }
+}
