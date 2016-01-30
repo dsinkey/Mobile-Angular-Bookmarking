@@ -78,7 +78,7 @@
     </div>
   </div>
 <!--Bookmark Controller -->
-  <div class="modal fade" id="addBookmark" tabindex="-1" role="dialog">
+  <div ng-controller="BookmarCtrl" class="modal fade" id="addBookmark" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -88,19 +88,19 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="url">URL</label>
-            <input type="url" class="form-control" id="url" placeholder="Add Bookmark URL">
+            <input type="url" class="form-control" id="url" placeholder="Add Bookmark URL" ng-model="bookmark.url">
           </div>
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Add Bookmark Title">
+            <input type="text" class="form-control" id="title" placeholder="Add Bookmark Title" ng-model="bookmark.title">
           </div>
           <div class="form-group">
             <label for="title">Tags</label>
-            <input type="text" class="form-control" id="tags" placeholder="Comma seperated tags i.e. Angular, Jquery, Foundation">
+            <input type="text" class="form-control" id="tags" placeholder="Comma seperated tags i.e. Angular, Jquery, Foundation" ng-model="bookmark.tags">
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-primary btn-block">Save Bookmark</button>
+          <button type="button" class="btn btn-primary btn-primary btn-block" data-dismiss="modal" ng-disabled="!bookmark.url || !bookmark.title || !bookmark.tags">Save Bookmark</button>
         </div>
       </div>
     </div>
