@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myApp', []).run(function($document) { });
+angular.module('myApp', ['myApp.controllers', 'myApp.services']).run(function($document) { });

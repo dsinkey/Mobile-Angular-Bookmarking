@@ -35,36 +35,22 @@
   </div>
 
 <!--Bookmarks and Pagination -->
-  <div class="container-fluid" style="padding-top: 70px;">
-    <div class="row">
+  <div ng-controller="MainCtrl" class="container-fluid" style="padding-top: 70px;">
+    <div class="row" ng-repeat="bookmark in bookmarks" style="padding-top: 10px;">
       <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 text-right">
-        <a href="#"><img src="img/angular20.jpg"></a>
+        <a ng-href="{{bookmark.url}}"><img src="http:lorempixel.com/random/80/80"></a>
       </div>
       <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
-        <b>AngularJS 2.0 is a framework for mobile apps</b>
+        <b ng-bind="bookmark.title"></b>
         <p>
-          <a href="http://blog.angularjs.org/2014/angular-20.html" target="_blank">http://blog.angularjs.org/2014/angular-20.html</a>
+          <a ng-href="{{bookmark.url}}" target="_blank" ng-bind="{{bookmark.url}}">{{bookmark.url}}</a>
         </p>
-        <span class="label label-primary">Angular</span>
-        <span class="label label-default">Angular Advanced</span>
-        <span class="label label-danger">MVC</span>
+        <span style="margin-right: 5px;" class="label" ng-class="{0: 'label-default', 1: 'label-primary', 2: 'label-success', 3: 'label-info', 4: 'label-warning', 0: 'label-danger'}[$index]" ng-repeat="tag in bookmark.tags" ng-bind="tag"></span>
       </div>
     </div>
     <hr>
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 text-right">
-        <a href="#"><img src="img/durandal.jpg"></a>
-      </div>
-      <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
-        <b>Angular and Durandal Converge</b>
-        <p>
-          <a href="http://blog.angularjs.org/2014/angular-and-durandal-converge.html" target="_blank">http://blog.angularjs.org/2014/angular-and-durandal-converge.html</a>
-        </p>
-        <span class="label label-primary">Angular</span>
-        <span class="label label-default">Durandal</span>
-      </div>
-    </div>
-    <hr>
+  </div>
+
     <div class="text-center">
       <ul class="pagination">
         <li><a href="#">&laquo;</a></li>
@@ -76,9 +62,8 @@
         <li><a href="#">&raquo;</a></li>
       </ul>
     </div>
-  </div>
 <!--Bookmark Controller -->
-  <div ng-controller="BookmarCtrl" class="modal fade" id="addBookmark" tabindex="-1" role="dialog">
+  <div ng-controller="BookmarkCtrl" class="modal fade" id="addBookmark" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,7 +85,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-primary btn-block" data-dismiss="modal" ng-disabled="!bookmark.url || !bookmark.title || !bookmark.tags" n-click="save()">Save Bookmark</button>
+          <button type="button" class="btn btn-primary btn-primary btn-block" data-dismiss="modal" ng-disabled="!bookmark.url || !bookmark.title || !bookmark.tags" ng-click="save()">Save Bookmark</button>
         </div>
       </div>
     </div>
@@ -112,6 +97,7 @@
 <script src="bower_components/foundation/js/foundation.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
 <!--<!(endif)-->
 <!--(if target dist)>
 <script src="js/fun-with-ng-animate.js"></script>

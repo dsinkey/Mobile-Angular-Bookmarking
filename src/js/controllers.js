@@ -1,6 +1,5 @@
-angular.module('MyApp.controllers', []).controller('BookmarkCtrl', function($scope, BookmarkStore, $rootScope, $element){
+angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($scope, BookmarkStore, $rootScope, $element){
   $scope.save = function(){
-
     var arrBookmarks = BookmarkStore.get();
 
     arrBookmarks.push({
@@ -12,12 +11,10 @@ angular.module('MyApp.controllers', []).controller('BookmarkCtrl', function($sco
 
     BookmarkStore.put(arrBookmarks);
 
-    $rootScope.$bookcast('MainCtrl:loadBookmarks', {});
+    $rootScope.$broadcast('MainCtrl:loadBookmarks', {});
     $element.modal('hide');
   };
-});
-
-angular.module('MyApp.controllers', []).controller('MainCtrl', function($scope, BookmarkStore, $location){
+}).controller('MainCtrl', function($scope, BookmarkStore, $location){
   loadBookmarks();
 
   $scope.$on('MainCtrl:loadBookmarks', loadBookmarks);
@@ -25,7 +22,7 @@ angular.module('MyApp.controllers', []).controller('MainCtrl', function($scope, 
   function loadBookmarks(){
     $scope.bookmarks = BookmarkStore.get(true);
     $scope.perPage = 10;
-    $scope.totalPages = Math.ceil($scope.bookmarks.lenght / $scope.perPage);
+    $scope.totalPages = Math.ceil($scope.bookmarks.length / $scope.perPage);
     $scope.currentPage = 1;
   };
 });
