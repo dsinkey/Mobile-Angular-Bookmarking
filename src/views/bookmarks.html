@@ -14,18 +14,19 @@
     <hr>
   </div>
 
-    <div class="text-center">
-      <ul class="pagination">
-        <li ng-class="{'disabled': isFirst()}">
-          <span ng-if="isFirst()">&laquo;</span><a ng-if="!isFirst()" href="#/page/{{currentPage - 1}}">&laquo;</a>
-        </li>
-        <li ng-repeat="page in pages" ng-class="{'active': page == currentPage}">
-          <a href="#/page/{{$index + 1}}" ng-bind="page"></a>
-        </li>
-        <li ng-class="{'disabled': isLast()}">
-          <span ng-if="isLast()">&raquo;</span><a ng-if="!isFirst()" href="#/page/{{currentPage + 1}}">&raquo;</a>
-        </li>
-    </div>
+  <div class="text-center">
+    <ul class="pagination">
+      <li ng-class="{'disabled': isFirst()}">
+        <span ng-if="isFirst()">&laquo;</span><a ng-if="!isFirst()" href="#/page/{{currentPage - 1}}">&laquo;</a>
+      </li>
+      <li ng-repeat="page in pages" ng-class="{'active': page == currentPage}">
+        <a href="#/page/{{$index + 1}}" ng-bind="page"></a>
+      </li>
+      <li ng-class="{'disabled': isLast()}">
+        <span ng-if="isLast()">&raquo;</span><a ng-if="!isFirst()" href="#/page/{{currentPage + 1}}">&raquo;</a>
+      </li>
+    </ul>
+  </div>
 <!--Bookmark Controller -->
   <div ng-controller="BookmarkCtrl" class="modal fade" id="addBookmark" tabindex="-1" role="dialog">
     <div class="modal-dialog">

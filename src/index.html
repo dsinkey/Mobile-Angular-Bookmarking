@@ -22,7 +22,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <form class="navbar-form navbar-right" role="form">
-          <div class="input-group">
+          <div class="input-group" ng-controller="SearchCtrl">
             <input type="text" class="form-control" placeholder="Find Bookmarks" ng-model="searchCriteria">
             <span class="input-group-btn">
               <button class="btn btn-danger" ng-click="searchIt(searchCriteria)">Search</button>
