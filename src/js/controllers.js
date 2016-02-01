@@ -11,13 +11,14 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
 
     BookmarkStore.put(arrBookmarks);
 
-    $rootScope.$broadcast('MainCtrl:loadBookmarks', {});
+    $rootScope.$broadcast('mainCtrl:loadBookmarks', {});
     $element.modal('hide');
+
   };
 }).controller('MainCtrl', function($scope, BookmarkStore, $location){
   loadBookmarks();
 
-  $scope.$on('MainCtrl:loadBookmarks', loadBookmarks);
+  $scope.$on('mainCtrl:loadBookmarks', loadBookmarks);
 
   function loadBookmarks(){
     $scope.bookmarks = BookmarkStore.get(true);
@@ -26,9 +27,9 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     $scope.currentPage = 1;
 
     if($scope.currentPage > $scope.totalPages) {
-      $location.path('/page/1'):
+      $location.path('/page/1');
     } else {
-      $scope.pageBookmarks = $scope.bookmarks.slice(($scope.currentPage - 1) * $scope.perPage, $scope.currentPage * scope.perPage);
+      $scope.pageBookmarks = $scope.bookmarks.slice(($scope.currentPage - 1) * $scope.perPage, $scope.currentPage * $scope.perPage);
       $scope.pages = [];
       
       for (var i = 0; i < $scope.totalPages; i++) {
@@ -38,7 +39,7 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
   };
 
   $scope.paginate = function(mode){
-    if ((mode === 'backward' && $scope.isFirst()) || (mode ==- 'forward' && $scope.isLast())) return;
+    if ((mode === 'backward' && $scope.isFirst()) || (mode === 'forward' && $scope.isLast())) return;
 
     $rootScope.slideDirection = mode;
     $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
