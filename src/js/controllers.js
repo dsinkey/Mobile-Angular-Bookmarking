@@ -24,5 +24,32 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     $scope.perPage = 10;
     $scope.totalPages = Math.ceil($scope.bookmarks.length / $scope.perPage);
     $scope.currentPage = 1;
+
+    if($scope.currentPage > $scope.totalPages) {
+      $location.path('/page/1'):
+    } else {
+      $scope.pageBookmarks = $scope.bookmarks.slice(($scope.currentPage - 1) * $scope.perPage, $scope.currentPage * scope.perPage);
+      $scope.pages = [];
+      
+      for (var i = 0; i < $scope.totalPages; i++) {
+        $scope.pages.push(i + 1);
+      }
+    }
   };
+
+  $scope.paginate = function(mode){
+    if ((mode === 'backward' && $scope.isFirst()) || (mode ==- 'forward' && $scope.isLast())) return;
+
+    $rootScope.slideDirection = mode;
+    $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
+  };
+
+  $scope.isFirst = function(){
+    return $scope.currentPage === 1;
+  };
+
+  $scope.isLast = function() {
+    return $scope.currentPage === $scope.totalPages;
+  };
+
 });
