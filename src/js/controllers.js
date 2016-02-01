@@ -15,16 +15,16 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     $element.modal('hide');
 
   };
-}).controller('MainCtrl', function($scope, BookmarkStore, $location){
+}).controller('MainCtrl', function($scope, BookmarkStore, $location, $route){
   loadBookmarks();
 
   $scope.$on('mainCtrl:loadBookmarks', loadBookmarks);
 
   function loadBookmarks(){
     $scope.bookmarks = BookmarkStore.get(true);
-    $scope.perPage = 10;
+    $scope.perPage = 3;
     $scope.totalPages = Math.ceil($scope.bookmarks.length / $scope.perPage);
-    $scope.currentPage = 1;
+    $scope.currentPage = parseInt($route.current.params.pageNumber, false) || 1;
 
     if($scope.currentPage > $scope.totalPages) {
       $location.path('/page/1');
