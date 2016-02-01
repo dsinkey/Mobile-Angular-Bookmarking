@@ -38,12 +38,12 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     }
   };
 
-  $scope.paginate = function(mode){
-    if ((mode === 'backward' && $scope.isFirst()) || (mode === 'forward' && $scope.isLast())) return;
+  // $scope.paginate = function(mode){
+  //   if ((mode === 'backward' && $scope.isFirst()) || (mode === 'forward' && $scope.isLast())) return;
 
-    $rootScope.slideDirection = mode;
-    $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
-  };
+  //   $rootScope.slideDirection = mode;
+  //   $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
+  // };
 
   $scope.isFirst = function(){
     return $scope.currentPage === 1;
@@ -53,4 +53,10 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     return $scope.currentPage === $scope.totalPages;
   };
 
+}).controller('SearchCtrl', function($scope, BookmarkStore, $location, $route){
+  $scope.searchIt = function(searchCriteria){
+    BookmarkStore.searchCriteria = searchCriteria;
+    $location.path('/page/1');
+    $route.reload();
+  };
 });
