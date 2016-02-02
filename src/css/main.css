@@ -1,6 +1,7 @@
 html.touch .view-animation.backward.ng-enter {
   position: relative;
   -webkit-animation: enter_backward 0.5s linear;
+     -moz-animation: enter_backward 0.5s linear;
 }
 
 @-webkit-keyframes enter_backward {
@@ -8,12 +9,23 @@ html.touch .view-animation.backward.ng-enter {
   to { left: 0%;}
 }
 
+@-moz-keyframes enter_backward {
+  from { left: -100%; }
+  to { left: 0%;}
+}
+
 html.touch .view-animation.forward.ng-enter {
   position: relative;
   -webkit-animation: enter_forward 0.5s linear;
+     -moz-animation: enter_backward 0.5s linear;;
 }
 
 @-webkit-keyframes enter_forward {
+  from { left: -100%; }
+  to { left: 0%; }
+}
+
+@-moz-keyframes enter_forward {
   from { left: -100%; }
   to { left: 0%; }
 }
