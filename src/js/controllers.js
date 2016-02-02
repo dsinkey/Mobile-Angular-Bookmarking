@@ -53,6 +53,10 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     return $scope.currentPage === $scope.totalPages;
   };
 
+  $scope.isDesktop = function(){
+    return !Modernizr.touch && $scope.pages;
+  };
+
 }).controller('SearchCtrl', function($scope, BookmarkStore, $location, $route){
   $scope.searchIt = function(searchCriteria){
     BookmarkStore.searchCriteria = searchCriteria;

@@ -14,7 +14,7 @@
     <hr>
   </div>
 
-  <div class="text-center">
+  <div class="text-center" ng-if="isDesktop()">
     <ul class="pagination">
       <li ng-class="{'disabled': isFirst()}">
         <span ng-if="isFirst()">&laquo;</span><a ng-if="!isFirst()" href="#/page/{{currentPage - 1}}">&laquo;</a>
