@@ -1,0 +1,55 @@
+html.touch .view-animation.backward.ng-enter {
+  position: relative;
+  -webkit-animation: enter_backward 0.5s linear;
+     -moz-animation: enter_backward 0.5s linear;
+       -o-animation: enter_backward 0.5s linear;
+          animation: enter_backward 0.5s linear;
+}
+
+@-webkit-keyframes enter_backward {
+  from {-webkit-transform: translate(-100%, 0); }
+  to  { -webkit-transform: translate(0%, 0); }
+}
+
+@-moz-keyframes enter_backward {
+  from {  -moz-transform: translate(-100%, 0); }
+  to {-100-moz-transform: translate(0%, 0); }
+}
+
+@-o-keyframes enter_backward {
+  from { -o-transform: translate(-100%, 0); }
+  to   { -o-transform: translate(0%, 0); }
+}
+
+@keyframes enter_backward {
+  from { transform: translate(-100%, 0); }
+  to   { transform: translate(0%, 0); }
+}
+
+html.touch .view-animation.forward.ng-enter {
+  position: relative;
+  -webkit-animation: enter_forward 0.5s linear;
+     -moz-animation: enter_forward 0.5s linear;
+       -o-animation: enter_forward 0.5s linear;
+          animation: enter_forward 0.5s linear;
+}
+
+@-webkit-keyframes enter_forward {
+  from {-webkit-transform: translate(-100%, 0); }
+  to  { -webkit-transform: translate(0%, 0); }
+}
+
+@-moz-keyframes enter_forward {
+  from {  -moz-transform: translate(-100%, 0); }
+  to {-100-moz-transform: translate(0%, 0); }
+}
+
+@-o-keyframes enter_forward {
+  from { -o-transform: translate(-100%, 0); }
+  to   { -o-transform: translate(0%, 0); }
+}
+
+@keyframes enter_forward {
+  from { transform: translate(-100%, 0); }
+  to   { transform: translate(0%, 0); }
+}

@@ -4,9 +4,14 @@ module.exports = function (grunt) {
         concat: {
             options: { separator: ';' },
             dist: {
-                src: [ 'src/bower_components/jquery/jquery.js',
+                src: [
+                    'src/bower_components/modernizr/modernizr.js',
+                    'src/bower_components/jquery/dist/jquery.js',
                     'src/bower_components/angular/angular.js',
-                    'src/bower_components/ng-grid/ng-grid-2.0.7.debug.js',
+                    'src/bower_components/angular-route/angular-route.js',
+                    'src/bower_components/angular-touch/angular-touch.js',
+                    'src/bower_components/angular-animate/angular-animate.js',
+                    'src/bower_components/bootstrap/dist/js/bootstrap.js',
                     'src/js/app.js', 'src/js/controllers.js', 'src/js/filters.js' ],
                 dest: 'dist/js/<%= pkg.name %>.js'
             }
@@ -15,7 +20,8 @@ module.exports = function (grunt) {
             main: {
                 files: [
                     { expand: true, cwd: 'src/css/', src: ['**'], dest: 'dist/css/' },
-                    { expand: true, cwd: 'src/bower_components/fullcalendar/', src: ['*.css'], dest: 'dist/css/' }
+                    { expand: true, cwd: 'src/bower_components/bootstrap/dist/css', src: ['bootstrap.css'], dest: 'dist/bower_components/bootstrap/dist/css' },
+                    { expand: true, cwd: 'src/views', src: ['**'], dest: 'dist/views/' }
                 ]
             }
         },
@@ -25,17 +31,11 @@ module.exports = function (grunt) {
                     'dist/index.html': 'src/index.html'
                 }
             }
-        },
-        karma: {
-            unit: {
-                configFile: 'conf/karma.conf.js',
-                singleRun: true
-            }
         }
     });
+
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-targethtml');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('dist', ['karma', 'concat', 'targethtml', 'copy']);
+    grunt.registerTask('dist', ['concat', 'targethtml', 'copy']);
 };
