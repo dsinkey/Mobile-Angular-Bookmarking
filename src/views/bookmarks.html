@@ -1,4 +1,4 @@
-<div ng-controller="MainCtrl" class="container-fluid" style="padding-top: 70px;">
+<div ng-controller="MainCtrl" class="container-fluid" style="padding-top: 70px;" ng-swipe-left="paginate('forward')" ng-swipe-right="paginate('backward)">
     <div class="row" ng-repeat="bookmark in bookmarks" style="padding-top: 10px;">
       <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 text-right">
         <a ng-href="{{bookmark.url}}"><img src="http://lorempixel.com/random/80/80"></a>

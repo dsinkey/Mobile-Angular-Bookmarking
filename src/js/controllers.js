@@ -15,7 +15,7 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     $element.modal('hide');
 
   };
-}).controller('MainCtrl', function($scope, BookmarkStore, $location, $route, $filter){
+}).controller('MainCtrl', function($scope, $rootScope, BookmarkStore, $location, $route, $filter){
   loadBookmarks();
 
   $scope.$on('mainCtrl:loadBookmarks', loadBookmarks);
@@ -38,12 +38,12 @@ angular.module('myApp.controllers', []).controller('BookmarkCtrl', function($sco
     }
   };
 
-  // $scope.paginate = function(mode){
-  //   if ((mode === 'backward' && $scope.isFirst()) || (mode === 'forward' && $scope.isLast())) return;
+  $scope.paginate = function(mode){
+    if ((mode === 'backward' && $scope.isFirst()) || (mode === 'forward' && $scope.isLast())) return;
 
-  //   $rootScope.slideDirection = mode;
-  //   $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
-  // };
+    $rootScope.slideDirection = mode;
+    $location.path('/page/' + (mode === 'forward' ? $scope.currentPage + 1 : $scope.currentPage - 1));
+  };
 
   $scope.isFirst = function(){
     return $scope.currentPage === 1;
